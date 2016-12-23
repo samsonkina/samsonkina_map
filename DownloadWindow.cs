@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace samsonkina_map
     {
         // путь к папке с картами
         private string path;
+        private int selectedServer;
+        private int selectedCity;
         private string[,] cities;
         private string[,] servers;
 
@@ -34,6 +37,9 @@ namespace samsonkina_map
             ListOfServers.Text = ListOfServers.Items[0].ToString();
         }
 
+        static public DownloadInfo.City SelectedCity;
+        static public DownloadInfo.Server SelectedServer;
+        public static string catalogPath;
         /// <summary>
         /// нажатие на кнопку
         /// </summary>
@@ -48,6 +54,15 @@ namespace samsonkina_map
 
         private void GetDownloadInfo()
         {
+            selectedCity = ListOfCities.SelectedIndex;
+            selectedServer = ListOfServers.SelectedIndex;
+
+            // создаем класс для выбранного города  имя -- широта -- долгота
+            SelectedCity = new DownloadInfo.City(cities[selectedCity, 0], Double.Parse(cities[selectedCity, 1].Replace('.', ',')),
+                                    Double.Parse(cities[selectedCity, 2].Replace('.', ',')));
+
+            // создаем класс для выбранного сервера  имя -- ссылка -- список серверов
+            SelectedServer = new DownloadInfo.Server(servers[selectedServer, 0], servers[selectedServer, 1], servers[selectedServer, 2].Split(' '));
 
         }
 
@@ -55,7 +70,10 @@ namespace samsonkina_map
 
         private void CreateCatalogPath()
         {
-
+            catalogPath += path + "\\" + SelectedServer.name + "\\" + SelectedCity.name + "\\";
+            // создаем каталог если нет
+            if (!Directory.Exists(catalogPath))
+                Directory.CreateDirectory(catalogPath);
         }
 
     }
