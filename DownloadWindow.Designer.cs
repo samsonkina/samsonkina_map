@@ -28,21 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLoad = new System.Windows.Forms.Button();
             this.ListOfServers = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ListOfCities = new System.Windows.Forms.ComboBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(197, 180);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 14;
-            this.btnLoad.Text = "Загрузить";
-            this.btnLoad.UseVisualStyleBackColor = true;
             // 
             // ListOfServers
             // 
@@ -78,6 +69,16 @@
             this.ListOfCities.Size = new System.Drawing.Size(260, 21);
             this.ListOfCities.TabIndex = 10;
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(197, 180);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 14;
+            this.btnLoad.Text = "Загрузить";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // DownloadWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -89,19 +90,18 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ListOfCities);
             this.Name = "DownloadWindow";
-            this.Text = "Form1";
+            this.Text = "DownloadWindow";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnLoad;
         public System.Windows.Forms.ComboBox ListOfServers;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox ListOfCities;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
 

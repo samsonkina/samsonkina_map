@@ -50,6 +50,10 @@ namespace samsonkina_map
             // создаем путь до папки города
             CreateCatalogPath();
 
+            MapWindow mw = new MapWindow();
+            if (!mw.IsDisposed)
+                mw.Show();
+
         }
 
         private void GetDownloadInfo()
@@ -76,5 +80,9 @@ namespace samsonkina_map
                 Directory.CreateDirectory(catalogPath);
         }
 
+        private void btnLoad_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
